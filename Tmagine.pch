@@ -1,0 +1,16 @@
+#ifndef TMAGINE_TMAGINE_H
+#define TMAGINE_TMAGINE_H
+
+#define GLOG_LOGGING_ENABLED 1
+
+#include <stddef.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
+
+#include <string.h>
+
+#include <gLog.h>
+
+#endif //TMAGINE_TMAGINE_H
