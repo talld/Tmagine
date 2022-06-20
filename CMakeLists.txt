@@ -40,6 +40,7 @@ set(GAME_SRC ${GAME_SRC}
         main.cpp
         Code/FlagKeeper/FlagKeeper.cpp
         Code/LineReader/LineReader.cpp
+        Code/DialogueSorter/Dialogue.cpp
         )
 
 set(GAME_PCH ${GAME_PCH}
@@ -50,6 +51,7 @@ set(GAME_PCH ${GAME_PCH}
 set(GAME_INC ${GAME_INC}
         Code/FlagKeeper
         Code/LineReader
+        Code/DialogueSorter
         )
 
 add_executable(Tmagine ${GAME_SRC} ${LIBS_SRC})
