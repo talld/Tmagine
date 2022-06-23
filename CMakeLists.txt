@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION 3.22)
+cmake_minimum_required(VERSION 3.20)
 project(Tmagine)
 
 set(CMAKE_CXX_STANDARD 17)
 
 # LUA ##########################################################################
-FIND_PACKAGE(Lua 5.4 REQUIRED)
+FIND_PACKAGE(Lua 5.3 REQUIRED)
 set( LIBS_INCLUDE_DIRS ${INCLUDE_DIRS} ${LUA_INCLUDE_DIR} )
 set( LIBRARIES         ${LIBRARIES}    ${LUA_LIBRARIES}   )
 
