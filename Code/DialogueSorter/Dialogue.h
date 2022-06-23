@@ -3,12 +3,12 @@
 
 typedef struct _DialogueNode
 {
-	size_t dialogueIndex;
-	size_t optionCount;
-	size_t optionPairs[0]; // always a mul of two, org: [..., option, dest, ...]
+	size_t   dialogueIndex;
+	size_t   optionCount;
+	uint32_t optionPairs[0]; // always a mul of two, org: [..., option, dest, ...]
 }
-DialogueNode;
+DialogueNode_t;
 
-DialogueNode* Dialogue_LoadNodeFromLine(char* nodeData);
+DialogueNode_t* Dialogue_LoadNodeFromLine(char* nodeData);
 
 #endif //TMAGINE_DIALOGUE_H

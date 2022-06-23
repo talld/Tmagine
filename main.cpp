@@ -16,6 +16,6 @@ int main()
 	GLOG_INFO("%s", t);
 	GLOG_INFO("A_REALLY_BIG_HAT: %d", d);
 
-	char test[] = "0,100>24,3,47>59";
+	char test[] = "0,100>24,3>-1,47>59";
 	Dialogue_LoadNodeFromLine(test);
 }
