@@ -158,6 +158,36 @@ void LineReader_enactCommand(TokenStack_t* tokenStack,
 	}
 }
 
+std::shared_ptr<char*> LineReader_stripLine(char** text) {
+
+	// strtok with extra steps but i dont have internet at time of writing
+	// to check if there's a strntok or whatever
+	// and before you mention man i haven't downloaded any
+	// and even if i had delving through man pages for specific functions sucks
+	// like really really sucks.
+	// TODO: google this and delete rant
+
+	using Line = std::shared_ptr<char*>;
+	Line ret;
+
+	char* start = *text;
+	char* end = start;
+
+	while ( *end++ != '\n' ) ;
+
+	ptrdiff_t diff = end - start;
+	*text = end;
+
+	char * lineOfText = (char*) malloc (diff);
+	strncpy(lineOfText, start, diff);
+	lineOfText[diff-1] = '\0'; // replace delim with 0
+
+	ret = std::make_shared<char*>(lineOfText);
+
+
+	return ret;
+}
+
 ReturnStack_t LineReader_process(const char *line, char * * const outString)
 {
 

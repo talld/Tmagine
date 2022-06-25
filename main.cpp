@@ -18,4 +18,7 @@ int main()
 
 	char test[] = "0,100>24,3>-1,47>59";
 	Dialogue_LoadNodeFromLine(test);
+
+	char* test2 = " a string \n with multiple lines";
+	LineReader_stripLine(&test2);
 }

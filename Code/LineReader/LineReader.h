@@ -3,8 +3,11 @@
 
 #include <LineReaderDefs.h>
 #include <deque>
+#include <memory>
 
 typedef std::deque<uint64_t> ReturnStack_t;
+
+std::shared_ptr<char*> LineReader_stripLine(char** text);
 
 ReturnStack_t LineReader_process(const char* line, char * * outString);
 
