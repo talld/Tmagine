@@ -8,6 +8,13 @@ FIND_PACKAGE(Lua 5.3 REQUIRED)
 set( LIBS_INCLUDE_DIRS ${INCLUDE_DIRS} ${LUA_INCLUDE_DIR} )
 set( LIBRARIES         ${LIBRARIES}    ${LUA_LIBRARIES}   )
 
+# curses #######################################################################
+
+find_package(Curses REQUIRED)
+include_directories(${CURSES_INCLUDE_DIR})
+set( LIBS_INCLUDE_DIRS ${INCLUDE_DIRS} ${CURSES_INCLUDE_DIR} )
+set( LIBRARIES         ${LIBRARIES}    ${CURSES_LIBRARIES}   )
+
 ################################################################################
 ### gUse                                                                     ###
 ################################################################################

@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <iostream>
+#include <curses.h>
 
 #include <LineReader.h>
 #include <FlagKeeper.h>
