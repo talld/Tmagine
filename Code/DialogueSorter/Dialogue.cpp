@@ -1,5 +1,7 @@
 #include "Dialogue.h"
 #include <vector>
+#include <string>
+#include "stdlib.h"
 
 DialogueNode_t* Dialogue_LoadNodeFromLine(char *nodeData)
 {
@@ -35,6 +37,25 @@ DialogueNode_t* Dialogue_LoadNodeFromLine(char *nodeData)
 	{
 		ret->optionPairs[(i*2)  ] = options[i].first;
 		ret->optionPairs[(i*2)+1] = options[i].second;
+	}
+
+	return ret;
+}
+
+char* Dialogue_LoadNodeToLine(DialogueNode_t* toConvert)
+{
+	char* ret;
+	std::string line = "";
+	line += std::to_string(toConvert->dialogueIndex) ;
+
+	for(size_t i = 0; i < toConvert->optionCount; i++)
+	{
+
+
+		std::string from = std::to_string( toConvert->optionPairs[ (i * 2) + 0 ] );
+		std::string to   = std::to_string( toConvert->optionPairs[ (i * 2) + 1 ] );
+
+		line+= "," + from + ">" + to;
 	}
 
 	return ret;

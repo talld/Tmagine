@@ -18,8 +18,9 @@ int main()
 	GLOG_INFO("A_REALLY_BIG_HAT: %d", d);
 
 	char test[] = "0,100>24,3>-1,47>59";
-	Dialogue_LoadNodeFromLine(test);
+	DialogueNode_t* node = Dialogue_LoadNodeFromLine(test);
+	char* test2 = Dialogue_LoadNodeToLine(node);
 
-	char* test2 = " a string \n with multiple lines";
-	LineReader_stripLine(&test2);
+	char* test3 = " a string \n with multiple lines";
+	LineReader_stripLine(&test3);
 }

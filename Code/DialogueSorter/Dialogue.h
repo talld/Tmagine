@@ -11,4 +11,6 @@ DialogueNode_t;
 
 DialogueNode_t* Dialogue_LoadNodeFromLine(char* nodeData);
 
+char* Dialogue_LoadNodeToLine(DialogueNode_t* toConvert);
+
 #endif //TMAGINE_DIALOGUE_H
