@@ -7,7 +7,7 @@
 
 typedef std::deque<uint64_t> ReturnStack_t;
 
-std::shared_ptr<char*> LineReader_stripLine(char** text);
+std::shared_ptr<char*> LineReader_stripLine(const char** text);
 
 ReturnStack_t LineReader_process(const char* line, char * * outString);
 

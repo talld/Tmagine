@@ -15,7 +15,7 @@ void LineReader_processCommand(Parse_t* parse, TokenStack_t* tokenStack)
 			case ']':
 			{
 				Parse_creep(parse);
-				tokenStack->push_back( {TOKEN_END, nullptr} );
+				tokenStack->push_back({TOKEN_END, nullptr});
 				goto fin;
 			}
 			break;
@@ -23,21 +23,21 @@ void LineReader_processCommand(Parse_t* parse, TokenStack_t* tokenStack)
 			case '?':
 			{
 				Parse_creep(parse);
-				tokenStack->push_back( {TOKEN_QUERY, nullptr} );
+				tokenStack->push_back({TOKEN_QUERY, nullptr});
 			}
-				break;
+			break;
 
 			case '+':
 			{
 				Parse_creep(parse);
-				tokenStack->push_back( {TOKEN_ADD, nullptr} );
+				tokenStack->push_back({TOKEN_ADD, nullptr});
 			}
 			break;
 
 			case '-':
 			{
 				Parse_creep(parse);
-				tokenStack->push_back( {TOKEN_REMOVE, nullptr} );
+				tokenStack->push_back({TOKEN_REMOVE, nullptr});
 			}
 			break;
 
@@ -45,7 +45,7 @@ void LineReader_processCommand(Parse_t* parse, TokenStack_t* tokenStack)
 			case 'f':
 			{
 				Parse_creep(parse);
-				tokenStack->push_back( {TOKEN_FLAG, nullptr} );
+				tokenStack->push_back({TOKEN_FLAG, nullptr});
 			}
 			break;
 
@@ -53,7 +53,7 @@ void LineReader_processCommand(Parse_t* parse, TokenStack_t* tokenStack)
 			case 'I':
 			{
 				Parse_creep(parse);
-				tokenStack->push_back( {TOKEN_ITEM, nullptr} );
+				tokenStack->push_back({TOKEN_ITEM, nullptr});
 			}
 			break;
 
@@ -61,7 +61,7 @@ void LineReader_processCommand(Parse_t* parse, TokenStack_t* tokenStack)
 			case 'X':
 			{
 				Parse_creep(parse);
-				tokenStack->push_back( {TOKEN_XP, nullptr} );
+				tokenStack->push_back({TOKEN_XP, nullptr});
 			}
 			break;
 
@@ -79,15 +79,15 @@ void LineReader_processCommand(Parse_t* parse, TokenStack_t* tokenStack)
 
 				if(type < TOKEN_BAD)
 				{
-					// flat 255 is easier than doing strings that grow
+					// flat 255 is simpler than growing str
 					// imposes a hard limit for items but eh
 					char *str = (char *) calloc(1, 255);
 					size_t i = 0;
-					// assuming here that a digit is all digit
-					// will have to throw errors later if letter in numeral vals
+					// assuming that a digit is all digit
+					// TODO: error on alpha in numeral vals
 					while
 					(
-						isalnum( c = Parse_peek(parse, 0) )
+						isalnum(c=Parse_peek(parse, 0))
 						|| c == '_'
 					)
 					{
@@ -106,7 +106,7 @@ fin:
 }
 
 void LineReader_enactCommand(TokenStack_t* tokenStack,
-							 ReturnStack_t * returnStack)
+	       	ReturnStack_t * returnStack)
 {
 
 	// confirm that we have a valid command on the stack
@@ -115,7 +115,7 @@ void LineReader_enactCommand(TokenStack_t* tokenStack,
 
 	if(end != TOKEN_END)
 	{
-		GLOG_ERR("Invalid command: command not terminated");
+		GLOG_ERR("Invalid command: command not terminated!");
 	}
 
 	// from this point arg should not change
@@ -158,20 +158,21 @@ void LineReader_enactCommand(TokenStack_t* tokenStack,
 	}
 }
 
-std::shared_ptr<char*> LineReader_stripLine(char** text) {
+/***
+ * Grab a line from a string, 
+ * setting text to point at the end of the grabbed line.
+ * & returning a shared point to the grabbed line
+ */
+std::shared_ptr<char*> LineReader_stripLine(const char** text) {
 
-	// strtok with extra steps but i dont have internet at time of writing
-	// to check if there's a strntok or whatever
-	// and before you mention man i haven't downloaded any
-	// and even if i had delving through man pages for specific functions sucks
-	// like really really sucks.
-	// TODO: google this and delete rant
+	// strtok with extra steps?.
+	// TODO: improve?
 
 	using Line = std::shared_ptr<char*>;
 	Line ret;
 
-	char* start = *text;
-	char* end = start;
+	const char* start = *text;
+	const char* end   = start;
 
 	while ( *end++ != '\n' ) ;
 
@@ -183,7 +184,6 @@ std::shared_ptr<char*> LineReader_stripLine(char** text) {
 	lineOfText[diff-1] = '\0'; // replace delim with 0
 
 	ret = std::make_shared<char*>(lineOfText);
-
 
 	return ret;
 }

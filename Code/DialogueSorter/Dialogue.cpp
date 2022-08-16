@@ -8,7 +8,9 @@ DialogueNode_t* Dialogue_LoadNodeFromLine(char *nodeData)
 	DialogueNode_t* ret;
 	std::vector< std::pair<uint32_t,uint32_t> > options;
 
-	char* token = strtok(nodeData,","); // first numeric token is the top dialogue
+	// first numeric token is the top dialogue
+	char* token = strtok(nodeData,",");
+
 	size_t mainDialogue = atoi(token);
 
 	while (token = strtok(nullptr, ","),token != nullptr)
@@ -28,7 +30,8 @@ DialogueNode_t* Dialogue_LoadNodeFromLine(char *nodeData)
 	}
 
 	// option arr is uint32[0] so there need to be two slots per entry
-	size_t retSize = sizeof(DialogueNode_t) + ( options.size() * ( sizeof(uint32_t) * 2) );
+	size_t retSize = sizeof(DialogueNode_t) 
+		+ ( options.size() * ( sizeof(uint32_t) * 2) );
 	ret = (DialogueNode_t*) malloc(retSize);
 	ret->dialogueIndex = mainDialogue;
 	ret->optionCount   = options.size();
@@ -52,8 +55,11 @@ char* Dialogue_LoadNodeToLine(DialogueNode_t* toConvert)
 	{
 
 
-		std::string from = std::to_string( toConvert->optionPairs[ (i * 2) + 0 ] );
-		std::string to   = std::to_string( toConvert->optionPairs[ (i * 2) + 1 ] );
+		std::string from = std::to_string( 
+				toConvert->optionPairs[ (i * 2) + 0 ] );
+		
+		std::string to   = std::to_string( 
+				toConvert->optionPairs[ (i * 2) + 1 ] );
 
 		line+= "," + from + ">" + to;
 	}

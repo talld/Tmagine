@@ -32,10 +32,9 @@ bool FlagKeeper_remove(const char *flag)
 
 	if(exists)
 	{
-		auto removals =
-				std::remove(std::begin(flags),
-							   std::end(flags),
-							   flag);
+		auto removals =	std::remove(std::begin(flags),
+				            std::end(flags), flag);
+
 		flags.erase( removals, std::end(flags) );
 	}
 

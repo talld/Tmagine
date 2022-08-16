@@ -72,6 +72,6 @@ inline void Parse_skipWS(Parse_t* parse)
 void LineReader_processCommand(Parse_t* parse, TokenStack_t* tokenStack);
 
 void LineReader_enactCommand(TokenStack_t* tokenStack,
-							 ReturnStack_t * returnStack);
+		ReturnStack_t * returnStack);
 
 #endif //TMAGINE_LINEREADERDEFS_H

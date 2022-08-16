@@ -5,7 +5,8 @@ typedef struct _DialogueNode
 {
 	size_t   dialogueIndex;
 	size_t   optionCount;
-	uint32_t optionPairs[0]; // always a mul of two, org: [..., option, dest, ...]
+	// always a mul of two, org: [..., option, dest, ...]
+	uint32_t optionPairs[0];
 }
 DialogueNode_t;
 
